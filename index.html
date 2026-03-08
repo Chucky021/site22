@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal educacional completo e atualizado sobre Cirrose Hepática – causas, sintomas, diagnóstico, complicações, tratamento e prevenção. Fonte confiável para estudantes, profissionais e pacientes.">
+    <title>Cirrose Hepática – Informações Completas</title>
+    
+    <!-- ==================== ESTILO MODERNO (CSS) ==================== -->
+    <style>
+        :root {
+            --bg: #0a121d;              /* fundo quase preto com tom azul */
+            --card: #132030;            /* cards azul-escuro elegante */
+            --primary: #4a6fa5;         /* azul principal */
+            --accent: #e63946;          /* vermelho para alertas */
+            --text: #e0e1dd;            /* texto principal */
+            --muted: #778da9;           /* texto secundário */
+            --border: #2a3b54;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== HEADER FIXO ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 18, 29, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        header h1 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        /* ==================== NAVEGAÇÃO ==================== */
+        nav {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav button {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid transparent;
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav button:hover {
+            background: rgba(74, 111, 165, 0.15);
+            color: white;
+        }
+        
+        nav button.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 111, 165, 0.4);
+        }
+        
+        /* ==================== CONTAINER PRINCIPAL ==================== */
+        main {
+            max-width: 1100px;
+            margin: 110px auto 60px;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ==================== CARDS MODERNOS ==================== */
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+        }
+        
+        .card h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .highlight {
+            background: rgba(74, 111, 165, 0.15);
+            border-left: 5px solid var(--primary);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+        
+        /* ==================== ACCORDION ==================== */
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--card);
+        }
+        
+        .accordion-header {
+            padding: 1.2rem 1.6rem;
+            background: #1e3552;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background: #25405f;
+        }
+        
+        .accordion-header::after {
+            content: "▼";
+            font-size: 1.1rem;
+            transition: transform 0.4s ease;
+        }
+        
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.4s ease;
+            padding: 0 1.6rem;
+            background: #0f1b2c;
+        }
+        
+        .accordion-content.active {
+            max-height: 800px;
+            padding: 1.6rem;
+        }
+        
+        /* ==================== LISTAS E TEXTO ==================== */
+        ul {
+            padding-left: 1.6rem;
+        }
+        
+        li {
+            margin: 0.75rem 0;
+            position: relative;
+        }
+        
+        /* ==================== BOTÕES E HOVER ==================== */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(74, 111, 165, 0.5);
+        }
+        
+        /* ==================== RODAPÉ ==================== */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: #0a121d;
+            color: var(--muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        /* ==================== RESPONSIVO ==================== */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.4rem; }
+            nav button { padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+            .card { padding: 1.8rem 1.4rem; }
+        }
+        
+        /* Animação de fade-in suave */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section.active {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="header-container">
+            <h1>Cirrose Hepática – Informações Completas</h1>
+            <nav id="navMenu">
+                <!-- Botões gerados via JavaScript para facilitar manutenção -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- ==================== SEÇÃO INTRODUÇÃO ==================== -->
+        <section id="intro" class="section active">
+            <div class="card">
+                <h2>Introdução à Cirrose Hepática</h2>
+                <p>A cirrose hepática é o estágio final de diversas doenças hepáticas crônicas. Caracteriza-se pela substituição progressiva do tecido hepático saudável por tecido cicatricial (fibrose) e pela formação de nódulos regenerativos, levando à desorganização completa da arquitetura do fígado.</p>
+                
+                <div class="highlight">
+                    <strong>Dados atualizados (2025-2026):</strong> Afeta cerca de 1-2% da população adulta mundial. No Brasil, é a principal indicação de transplante hepático. A cirrose já foi considerada irreversível, mas hoje sabe-se que pode ser parcialmente reversível quando a causa é tratada precocemente.
+                </div>
+                
+                <h3>Funções do fígado comprometidas</h3>
+                <ul>
+                    <li>Filtração de toxinas do sangue</li>
+                    <li>Produção de proteínas (albumina, fatores de coagulação)</li>
+                    <li>Metabolismo de medicamentos e hormônios</li>
+                    <li>Armazenamento de glicogênio e vitaminas</li>
+                    <li>Produção de bile para digestão de gorduras</li>
+                </ul>
+                
+                <p><strong>Importante:</strong> A cirrose pode permanecer compensada por anos (sem sintomas graves) ou evoluir para descompensada, com complicações graves.</p>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO CAUSAS ==================== -->
+        <section id="causas" class="section">
+            <div class="card">
+                <h2>Principais Causas da Cirrose</h2>
+                <p>A cirrose resulta de lesão hepática crônica e repetida. As causas mais comuns no Brasil e no mundo são:</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">1. Consumo excessivo de álcool</div>
+                    <div class="accordion-content">
+                        <p>Principal causa evitável. Consumo crônico acima de 40-60 g/dia (homens) ou 20-40 g/dia (mulheres) por mais de 10 anos leva a esteatose → hepatite alcoólica → cirrose. Representa ~30-40% dos casos no Brasil.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">2. Hepatites virais crônicas (B e C)</div>
+                    <div class="accordion-content">
+                        <p>Hepatite C: 70-80% tornam-se crônicas. Hepatite B: risco maior com replicação viral alta. Juntas respondem por ~25-35% dos casos de cirrose globalmente. O tratamento antiviral pode reverter fibrose em muitos pacientes.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">3. Doença Hepática Gordurosa Metabólica (MASLD/MASH)</div>
+                    <div class="accordion-content">
+                        <p>Antes chamada NAFLD/NASH. Principal causa em ascensão devido à obesidade, diabetes tipo 2 e síndrome metabólica. Até 40% dos casos de cirrose nos países ocidentais em 2026.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">4. Outras causas importantes</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Doenças autoimunes (hepatite autoimune, colangite biliar primária)</li>
+                            <li>Hemocromatose, Doença de Wilson, deficiência de alfa-1-antitripsina</li>
+                            <li>Medicamentos e toxinas crônicas</li>
+                            <li>Cirrose biliar secundária a obstrução</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO SINTOMAS ==================== -->
+        <section id="sintomas" class="section">
+            <div class="card">
+                <h2>Sintomas e Sinais Clínicos</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Fase Compensada (poucos ou nenhum sintoma)</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Fadiga crônica e fraqueza</li>
+                            <li>Perda de apetite e peso leve</li>
+                            <li>Artralgias e mialgias inespecíficas</li>
+                            <li>Plaquetopenia isolada em exames</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Fase Descompensada (sinais graves)</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Icterícia (pele e olhos amarelados)</li>
+                            <li>Ascite (acúmulo de líquido na barriga)</li>
+                            <li>Edema nas pernas e pés</li>
+                            <li>Encefalopatia hepática (confusão mental, sonolência)</li>
+                            <li>Sangramento por varizes esofágicas</li>
+                            <li>Sinais clássicos: aranhas vasculares, eritema palmar, ginecomastia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO DIAGNÓSTICO ==================== -->
+        <section id="diagnostico" class="section">
+            <div class="card">
+                <h2>Diagnóstico e Estadiamento</h2>
+                <p>O diagnóstico combina história clínica, exames laboratoriais, imagem e, quando necessário, biópsia.</p>
+                
+                <div class="highlight">
+                    <strong>Métodos não invasivos preferidos em 2026:</strong> Elastografia (FibroScan) – valor >12-15 kPa indica cirrose.
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Exames laboratoriais principais</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Albumina baixa, bilirrubina alta, INR prolongado</li>
+                            <li>Plaquetopenia (hipersplenismo)</li>
+                            <li>Scores: FIB-4, APRI, ELF</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Scores prognósticos</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Child-Pugh</strong> (A/B/C) – clássico</li>
+                            <li><strong>MELD-Na / MELD 3.0</strong> – usado para priorização de transplante</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Exames de imagem</div>
+                    <div class="accordion-content">
+                        <p>Ultrassonografia com elastografia, TC ou RM multiparamétrica. Biópsia hepática permanece como padrão-ouro em casos duvidosos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO COMPLICAÇÕES ==================== -->
+        <section id="complicacoes" class="section">
+            <div class="card">
+                <h2>Complicações Avançadas</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Hipertensão portal e varizes esofágicas</div>
+                    <div class="accordion-content">
+                        <p>Risco de hemorragia digestiva alta. Profilaxia com betabloqueadores (carvedilol) ou ligadura elástica endoscópica.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Ascite e peritonite bacteriana espontânea (PBE)</div>
+                    <div class="accordion-content">
+                        <p>Tratamento: diuréticos + albumina. Profilaxia com norfloxacino em pacientes de alto risco.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Encefalopatia hepática</div>
+                    <div class="accordion-content">
+                        <p>Confusão mental causada por amônia. Tratamento: lactulose + rifaximina.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Carcinoma Hepatocelular (CHC)</div>
+                    <div class="accordion-content">
+                        <p>Risco anual de 1-4%. Vigilância obrigatória com ultrassom + AFP a cada 6 meses em cirróticos.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">Síndrome hepatorrenal e outras</div>
+                    <div class="accordion-content">
+                        <p>Insuficiência renal grave. Tratamento: albumina + terlipressina. Transplante é a cura definitiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO TRATAMENTO ==================== -->
+        <section id="tratamento" class="section">
+            <div class="card">
+                <h2>Tratamento e Manejo</h2>
+                <p>O tratamento é multidisciplinar e visa controlar a causa, prevenir complicações e avaliar transplante.</p>
+                
+                <ul>
+                    <li><strong>Tratamento etiológico:</strong> abstinência total de álcool, antivirais para HCV/HBV, controle metabólico na MASLD</li>
+                    <li><strong>Profilaxia:</strong> betabloqueadores, antibióticos, albumina em paracenteses</li>
+                    <li><strong>Suporte nutricional:</strong> dieta hiperproteica (1,2–1,5 g/kg/dia)</li>
+                    <li><strong>Transplante hepático:</strong> indicados quando MELD ≥ 15 ou complicações graves</li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>Novidades 2025-2026:</strong> novas drogas antifibróticas e moduladores de microbioma em estudos avançados. O tratamento precoce da causa pode reverter fibrose em até 50% dos casos selecionados.
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SEÇÃO PREVENÇÃO ==================== -->
+        <section id="prevencao" class="section">
+            <div class="card">
+                <h2>Prevenção e Vigilância</h2>
+                <p>A melhor forma de evitar cirrose é agir sobre os fatores de risco:</p>
+                
+                <ul>
+                    <li>Vacinação contra hepatite B</li>
+                    <li>Triagem e tratamento precoce da hepatite C</li>
+                    <li>Consumo zero ou moderado de álcool</li>
+                    <li>Controle rigoroso de peso, diabetes e colesterol</li>
+                    <li>Vigilância semestral de carcinoma hepatocelular em cirróticos</li>
+                    <li>Evitar medicamentos hepatotóxicos sem orientação médica</li>
+                </ul>
+                
+                <a href="#" class="btn" onclick="alert('Consulte sempre um hepatologista para orientação personalizada!')">Saiba mais sobre prevenção</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>Portal Educacional sobre Cirrose Hepática • Conteúdo baseado em fontes confiáveis (MSD Manual, American Liver Foundation, SBH, AASLD/EASL 2025-2026)</p>
+        <p><strong>AVISO:</strong> Este site é apenas informativo. Consulte sempre um médico para diagnóstico e tratamento.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Desenvolvido como projeto educacional – 2026</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT INTERATIVIDADE ==================== -->
+    <script>
+        // ==================== MENU DINÂMICO ====================
+        const sections = [
+            { id: "intro", title: "Introdução" },
+            { id: "causas", title: "Causas" },
+            { id: "sintomas", title: "Sintomas" },
+            { id: "diagnostico", title: "Diagnóstico" },
+            { id: "complicacoes", title: "Complicações" },
+            { id: "tratamento", title: "Tratamento" },
+            { id: "prevencao", title: "Prevenção" }
+        ];
+        
+        const navMenu = document.getElementById("navMenu");
+        
+        sections.forEach(section => {
+            const btn = document.createElement("button");
+            btn.textContent = section.title;
+            btn.onclick = () => showSection(section.id);
+            navMenu.appendChild(btn);
+        });
+        
+        // Função para alternar seções com animação
+        function showSection(sectionId) {
+            // Remove active de todas as seções e botões
+            document.querySelectorAll(".section").forEach(sec => {
+                sec.classList.remove("active");
+            });
+            
+            document.querySelectorAll("#navMenu button").forEach(btn => {
+                btn.classList.remove("active");
+            });
+            
+            // Ativa a seção selecionada
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add("active");
+            
+            // Ativa o botão correspondente
+            const buttons = document.querySelectorAll("#navMenu button");
+            buttons.forEach(btn => {
+                if (btn.textContent === sections.find(s => s.id === sectionId).title) {
+                    btn.classList.add("active");
+                }
+            });
+        }
+        
+        // ==================== ACCORDION ====================
+        function toggleAccordion(header) {
+            header.classList.toggle("active");
+            
+            const content = header.nextElementSibling;
+            content.classList.toggle("active");
+            
+            // Fecha outros accordions abertos na mesma seção (opcional)
+            const allContents = header.parentElement.parentElement.querySelectorAll(".accordion-content");
+            allContents.forEach(c => {
+                if (c !== content) {
+                    c.classList.remove("active");
+                    c.previousElementSibling.classList.remove("active");
+                }
+            });
+        }
+        
+        // ==================== INICIALIZAÇÃO ====================
+        // Abre a primeira seção e ativa o primeiro botão
+        window.onload = function() {
+            const firstButton = document.querySelector("#navMenu button");
+            if (firstButton) firstButton.classList.add("active");
+            
+            // Dica visual: primeiro accordion aberto por padrão na seção causas
+            setTimeout(() => {
+                const firstAccordionHeader = document.querySelector("#causas .accordion-header");
+                if (firstAccordionHeader) {
+                    // Não abrimos automaticamente para não sobrecarregar
+                }
+            }, 800);
+            
+            console.log("%c✅ Site de Cirrose Hepática carregado com sucesso! (Versão profissional 2026)", "color:#4a6fa5; font-weight:bold");
+        };
+        
+        // Prevenção de zoom excessivo em mobile (melhor UX)
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
